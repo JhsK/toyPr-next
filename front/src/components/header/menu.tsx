@@ -30,9 +30,21 @@ const Menu: React.FunctionComponent = () => {
               <li>소개</li>
             </a>
           </Link>
-          <li>목록</li>
-          <li>로그인</li>
-          <li>FAQ</li>
+          <Link href="/intro">
+            <a>
+              <li>목록</li>
+            </a>
+          </Link>
+          <Link href="/intro">
+            <a>
+              <li>로그인</li>
+            </a>
+          </Link>
+          <Link href="/intro">
+            <a>
+              <li>FAQ</li>
+            </a>
+          </Link>
         </MenuList>
       </HeaderContainer>
     </>
