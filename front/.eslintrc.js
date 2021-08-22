@@ -6,8 +6,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
   ],
-  plugins: ['prettier', '@typescript-eslint'],
+  plugins: ['prettier', '@typescript-eslint', 'import', 'react-hooks'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -22,6 +23,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'react/prop-types': 0,
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',

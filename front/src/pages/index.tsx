@@ -1,8 +1,14 @@
 import React from 'react';
 import { ReactElement } from 'react';
 
-const Home = (): ReactElement => {
-  return <div>test</div>;
+import Menu from '../components/header/menu';
+
+const Home = () => {
+  return (
+    <>
+      <Menu />
+    </>
+  );
 };
 
 export default Home;

@@ -5,12 +5,12 @@
     "moduleResolution": "Node", // Promise 관련 옵션
     "lib": [
       "ES2015",
-      "DOM",
+      "esnext",
       "DOM.Iterable"
     ],
     "esModuleInterop": true,
     "module": "esnext",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "skipLibCheck": true,
     "noEmit": true,
