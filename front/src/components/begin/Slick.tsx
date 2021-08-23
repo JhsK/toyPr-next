@@ -22,6 +22,8 @@ interface SliderOption {
   slidesToShow: number;
   slidesToScroll: number;
   arrows: boolean;
+  autoplay: boolean;
+  autoplaySpeed: number;
 }
 
 const Slick = () => {
@@ -33,6 +35,8 @@ const Slick = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   return (
