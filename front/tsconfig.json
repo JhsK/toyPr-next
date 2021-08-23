@@ -4,7 +4,7 @@
     "target": "ES5",
     "moduleResolution": "Node", // Promise 관련 옵션
     "lib": [
-      "ES2015",
+      "dom",
       "esnext",
       "DOM.Iterable"
     ],
