@@ -24,6 +24,7 @@ module.exports = {
       },
     ],
     'react/prop-types': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',
