@@ -15,7 +15,7 @@ const Continaer = styled.div`
 const CardContainer = styled.div`
   width: 1250px;
   height: 550px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid ${colorTheme.BORDER_GRAY};
   text-align: center;
 
   .cardBg {
