@@ -35,7 +35,7 @@ const Menu: React.FunctionComponent = () => {
               <li>목록</li>
             </a>
           </Link>
-          <Link href="/intro">
+          <Link href="/login">
             <a>
               <li>로그인</li>
             </a>

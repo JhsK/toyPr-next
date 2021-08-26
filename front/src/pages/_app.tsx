@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import Head from 'next/head';
-import List from '../components/union/List';
 import GlobalStyle from '../theme/globalStyle';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,7 +13,6 @@ const App = ({ Component }): ReactElement => {
         <meta charSet="UTF-8" />
       </Head>
       <Component />
-      <List />
     </>
   );
 };
