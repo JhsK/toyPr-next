@@ -5,6 +5,7 @@ export const colorTheme = {
   FONT_GRAY: '#918e8e',
   BORDER_GRAY: '#d9d9d9',
   HOVER_GRAY: '#fafafa',
+  BORDER_RED: '#ff616f',
 };
 
 export type ThemeType = typeof colorTheme;

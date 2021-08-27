@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Link from 'next/link';
 
@@ -38,20 +38,6 @@ const Form = styled.form`
     position: relative;
   }
 
-  & > div > input {
-    width: 100%;
-    border: 1px solid ${colorTheme.BORDER_GRAY};
-    border-radius: 30px;
-    height: 40px;
-    margin-bottom: 1rem;
-    outline: none;
-    padding-left: 2.2rem;
-  }
-
-  & > div > input:focus {
-    border: 1px solid ${colorTheme.MID_BLUE};
-  }
-
   .inputIconUser {
     position: absolute;
     top: 10px;
@@ -62,6 +48,21 @@ const Form = styled.form`
     position: absolute;
     bottom: 26px;
     left: 15px;
+  }
+`;
+
+const Input = styled.input<{ exColor: boolean }>`
+  width: 100%;
+  border: 1px solid ${colorTheme.BORDER_GRAY};
+  border-radius: 30px;
+  height: 40px;
+  margin-bottom: 1rem;
+  outline: none;
+  padding-left: 2.2rem;
+
+  &:focus {
+    border: 1px solid
+      ${props => (props.exColor ? colorTheme.MID_BLUE : colorTheme.BORDER_RED)};
   }
 `;
 
@@ -83,6 +84,28 @@ const Global = createGlobalStyle`
 `;
 
 const Login = () => {
+  const [userInpput, setUserInput] = useState('');
+  const [password, setPassword] = useState('');
+  const [userEx, setUserEx] = useState(false);
+  const [pwEx, setPwEx] = useState(false);
+
+  const Regex = /^[a-zA-Z][a-zA-Z0-9]+@bu.ac.kr/;
+
+  const onChangeUser = useCallback(
+    e => {
+      e.preventDefault();
+      setUserInput(e.target.value);
+
+      if (Regex.test(userInpput)) setUserEx(true);
+    },
+    [userInpput]
+  );
+
+  const onChangePw = useCallback(e => {
+    e.preventDefault();
+    setPassword(e.target.value);
+  }, []);
+
   return (
     <LoginContainer>
       <Global />
@@ -91,8 +114,20 @@ const Login = () => {
       </div>
       <Form>
         <div>
-          <input type="text" required />
-          <input type="password" required />
+          <Input
+            type="text"
+            value={userInpput}
+            onChange={onChangeUser}
+            required
+            exColor={userEx}
+          />
+          <Input
+            type="password"
+            value={password}
+            onChange={onChangePw}
+            required
+            exColor={pwEx}
+          />
           <AiOutlineUser className="inputIconUser" />
           <IoKeyOutline className="inputIconPw" />
         </div>
