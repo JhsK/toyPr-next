@@ -96,7 +96,9 @@ const Login = () => {
       e.preventDefault();
       setUserInput(e.target.value);
 
-      if (Regex.test(userInpput)) setUserEx(true);
+      const result = Regex.exec(userInpput);
+      if (result && result[0] === result.input) setUserEx(true);
+      else setUserEx(false);
     },
     [userInpput]
   );
