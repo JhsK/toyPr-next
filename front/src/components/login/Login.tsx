@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Link from 'next/link';
 
@@ -89,24 +89,44 @@ const Login = () => {
   const [userEx, setUserEx] = useState(false);
   const [pwEx, setPwEx] = useState(false);
 
-  const Regex = /^[a-zA-Z][a-zA-Z0-9]+@bu.ac.kr/;
+  const RegexUser = /^[a-zA-Z][a-zA-Z0-9]+@bu.ac.kr/;
+  const RegexPw =
+    /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+
+  useEffect(() => {
+    const result = RegexUser.exec(userInpput);
+    if (result && result[0] === result.input) setUserEx(true);
+    else setUserEx(false);
+  }, [userInpput]);
+
+  useEffect(() => {
+    const result = RegexPw.exec(password);
+    console.log(result);
+    if (result && result[0] === result.input) setPwEx(true);
+    else setPwEx(false);
+  }, [password]);
 
   const onChangeUser = useCallback(
     e => {
       e.preventDefault();
       setUserInput(e.target.value);
 
-      const result = Regex.exec(userInpput);
-      if (result && result[0] === result.input) setUserEx(true);
-      else setUserEx(false);
+      //console.log(result, userInpput, e.target.value);
     },
     [userInpput]
   );
 
-  const onChangePw = useCallback(e => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  }, []);
+  const onChangePw = useCallback(
+    e => {
+      e.preventDefault();
+      setPassword(e.target.value);
+    },
+    [password]
+  );
+
+  // const loginSubmit = useCallback(() => {
+  //   if ()
+  // })
 
   return (
     <LoginContainer>
@@ -114,7 +134,7 @@ const Login = () => {
       <div>
         <img src={Logo.src} alt="logo" />
       </div>
-      <Form>
+      <Form onSubmit={loginSubmit}>
         <div>
           <Input
             type="text"
