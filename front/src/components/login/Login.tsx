@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import Logo from '../../../public/logo_b.png';
 import { colorTheme } from '../../theme';
@@ -84,6 +85,7 @@ const Global = createGlobalStyle`
 `;
 
 const Login = () => {
+  const router = useRouter();
   const [userInpput, setUserInput] = useState('');
   const [password, setPassword] = useState('');
   const [userEx, setUserEx] = useState(false);
@@ -110,8 +112,6 @@ const Login = () => {
     e => {
       e.preventDefault();
       setUserInput(e.target.value);
-
-      //console.log(result, userInpput, e.target.value);
     },
     [userInpput]
   );
@@ -124,9 +124,14 @@ const Login = () => {
     [password]
   );
 
-  // const loginSubmit = useCallback(() => {
-  //   if ()
-  // })
+  const loginSubmit = useCallback(() => {
+    if (pwEx && userEx) {
+      router.push('/');
+    } else
+      alert(
+        '백석대학교 이메일 또는 비밀번호 영문, 특수문자 조건을 확인하세요.'
+      );
+  }, [pwEx, userEx]);
 
   return (
     <LoginContainer>
